@@ -42,6 +42,23 @@ public class SocketClient implements Client
         return null;
     }
 
+    @Override public Product addProduct(String title, String category,
+        String description, double price)
+    {
+        try
+        {
+            Product newProduct = new Product(title, category, description, price);
+            Request response = request(newProduct, "AddProduct");
+            return (Product) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     @Override
     public void startClient()
     {
@@ -77,7 +94,7 @@ public class SocketClient implements Client
         }
     }
 
-    private Request request(String arg, String type) throws IOException, ClassNotFoundException
+    private Request request(Object arg, String type) throws IOException, ClassNotFoundException
     {
         Socket socket = new Socket("localhost", 2910);
         ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
