@@ -1,9 +1,6 @@
 package com.sep3group2.networking;
 
-import transferobjects.CustomerUser;
-import transferobjects.Hello;
-import transferobjects.Product;
-import transferobjects.Request;
+import transferobjects.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -57,7 +54,7 @@ public class SocketClient implements Client
     }
 
     @Override
-    public void registerEmployee(CustomerUser user)
+    public void registerEmployee(EmployeeUser user)
     {
         try
         {

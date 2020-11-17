@@ -5,31 +5,24 @@ import com.sep3group2.networking.SocketClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import transferobjects.CustomerUser;
-
-import java.util.List;
+import transferobjects.EmployeeUser;
 
 @RestController
-@RequestMapping("/customerUsers")
-public class CustomerUserController
+@RequestMapping("/employeeUsers")
+public class EmployeeUserController
 {
     private Client socketClient;
 
     @Autowired
-    public CustomerUserController()
+    public EmployeeUserController()
     {
         this.socketClient = new SocketClient();
     }
 
-    @GetMapping
-    public List<CustomerUser> getAllUsers(){
-        return socketClient.getAllUsers();
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerUser(@RequestBody CustomerUser user)
+    public void registerUser(@RequestBody EmployeeUser user)
     {
-        socketClient.registerCustomer(user);
+        socketClient.registerEmployee(user);
     }
 }
