@@ -1,8 +1,6 @@
 package com.sep3group2.networking;
 
-import transferobjects.Hello;
-import transferobjects.Product;
-import transferobjects.Request;
+import transferobjects.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -57,6 +55,47 @@ public class SocketClient implements Client
         }
         return null;
 
+    }
+
+    @Override
+    public void registerCustomer(CustomerUser user)
+    {
+        try
+        {
+            Request response = request(user, "RegisterCustomerUser");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void registerEmployee(EmployeeUser user)
+    {
+        try
+        {
+            Request response = request(user, "RegisterEmployeeUser");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<CustomerUser> getAllUsers()
+    {
+        try
+        {
+            Request response = request(null, "GetAllUsers");
+            return (List<CustomerUser>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
