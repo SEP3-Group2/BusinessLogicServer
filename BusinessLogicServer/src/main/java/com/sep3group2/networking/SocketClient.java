@@ -99,6 +99,21 @@ public class SocketClient implements Client
     }
 
     @Override
+    public CustomerUser getCustomerUser(String email)
+    {
+        try
+        {
+            Request response = request(email, "GetCustomerUser");
+            return (CustomerUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public void startClient()
     {
         try
@@ -116,6 +131,8 @@ public class SocketClient implements Client
             e.printStackTrace();
         }
     }
+
+
 
     private void listenToServer(ObjectOutputStream outToServer, ObjectInputStream inFromServer)
     {

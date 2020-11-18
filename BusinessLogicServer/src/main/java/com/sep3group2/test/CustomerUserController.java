@@ -26,6 +26,11 @@ public class CustomerUserController
         return socketClient.getAllUsers();
     }
 
+    @GetMapping("/{email}")
+    public CustomerUser getUser(@PathVariable String email){
+        return socketClient.getCustomerUser(email);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUser(@RequestBody CustomerUser user)

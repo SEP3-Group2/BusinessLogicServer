@@ -18,4 +18,6 @@ public interface Client
     List<CustomerUser> getAllUsers();
 
     void startClient();
+
+    CustomerUser getCustomerUser(String email);
 }
