@@ -19,6 +19,11 @@ public class EmployeeUserController
         this.socketClient = new SocketClient();
     }
 
+    @GetMapping("/{email}")
+    public EmployeeUser getUser(@PathVariable String email){
+        return socketClient.getEmployeeUser(email);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUser(@RequestBody EmployeeUser user)

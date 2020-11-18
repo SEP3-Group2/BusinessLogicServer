@@ -114,6 +114,21 @@ public class SocketClient implements Client
     }
 
     @Override
+    public EmployeeUser getEmployeeUser(String email)
+    {
+        try
+        {
+            Request response = request(email, "GetEmployeeUser");
+            return (EmployeeUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public void startClient()
     {
         try

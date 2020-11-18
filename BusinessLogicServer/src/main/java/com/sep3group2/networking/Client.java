@@ -20,4 +20,6 @@ public interface Client
     void startClient();
 
     CustomerUser getCustomerUser(String email);
+
+    EmployeeUser getEmployeeUser(String email);
 }
