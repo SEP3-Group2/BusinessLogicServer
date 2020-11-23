@@ -1,4 +1,4 @@
-package com.sep3group2.test;
+package com.sep3group2.controllers;
 
 import com.sep3group2.networking.Client;
 import com.sep3group2.networking.SocketClient;

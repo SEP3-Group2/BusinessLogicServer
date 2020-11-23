@@ -1,16 +1,14 @@
-package com.sep3group2.test;
+package com.sep3group2.controllers;
 
 import com.sep3group2.networking.Client;
 import com.sep3group2.networking.SocketClient;
 import database.productDAO.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import transferobjects.Hello;
 import transferobjects.Product;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @RestController
