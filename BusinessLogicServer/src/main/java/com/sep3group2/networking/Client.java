@@ -9,8 +9,11 @@ import java.util.List;
 
 public interface Client
 {
-    Hello getHello();
     List<Product> getAllProducts();
+    List<Product> getTitleFilteredProducts(String title);
+    List<Product> getTitleCategoryFilteredProducts(String title,String category);
+    List<Product> getTitleCategoryPriceFilteredProducts(String title,String category,String price);
+
     Product addProduct(String title, String category, String description, double price);
 
     void registerCustomer(CustomerUser user);

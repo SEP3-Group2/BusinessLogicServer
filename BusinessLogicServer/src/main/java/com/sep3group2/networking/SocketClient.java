@@ -11,12 +11,12 @@ import java.util.List;
 public class SocketClient implements Client
 {
     @Override
-    public Hello getHello()
+    public List<Product> getAllProducts()
     {
         try
         {
-            Request response = request(null, "GetHello");
-            return (Hello) response.getArg();
+            Request response = request(null, "GetAllProducts");
+            return (List<Product>) response.getArg();
         }
         catch (IOException | ClassNotFoundException e)
         {
@@ -25,12 +25,41 @@ public class SocketClient implements Client
         return null;
     }
 
-    @Override
-    public List<Product> getAllProducts()
+    @Override public List<Product> getTitleFilteredProducts(String title)
     {
         try
         {
-            Request response = request(null, "GetAllProducts");
+            Request response = request(title, "GetTitleFilteredProducts");
+            return (List<Product>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<Product> getTitleCategoryFilteredProducts(String title, String category)
+    {
+        try
+        {
+            String[] requests = {title, category};
+            Request response = request(requests, "GetTitleCategoryFilteredProducts");
+            return (List<Product>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<Product> getTitleCategoryPriceFilteredProducts(String title, String category,String price)
+    {
+        try
+        {
+            String[] requests = {title, category,price};
+            Request response = request(requests, "GetTitleCategoryPriceFilteredProducts");
             return (List<Product>) response.getArg();
         }
         catch (IOException | ClassNotFoundException e)
