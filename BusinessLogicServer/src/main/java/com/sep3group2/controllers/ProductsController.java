@@ -24,16 +24,26 @@ public class ProductsController
         this.socketClient = new SocketClient();
     }
 
-    @GetMapping("/helloNEW")
-    public Hello GetHello()
-    {
-        return socketClient.getHello();
-    }
-
     @GetMapping
     public List<Product> getAllProducts(){
         return socketClient.getAllProducts();
     }
+
+    @GetMapping("/{title}")
+    public List<Product> getTitleFilteredProducts(@PathVariable String title){
+        return socketClient.getTitleFilteredProducts(title);
+    }
+
+    @GetMapping("/{title}/{category}")
+    public List<Product> getTitleCategoryFilteredProducts(@PathVariable String title,@PathVariable String category){
+        return socketClient.getTitleCategoryFilteredProducts(title,category);
+    }
+
+    @GetMapping("/{title}/{category}/{price}")
+    public List<Product> getTitleCategoryPriceFilteredProducts(@PathVariable String title,@PathVariable String category,@PathVariable String price){
+        return socketClient.getTitleCategoryPriceFilteredProducts(title,category,price);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product AddProduct(@RequestBody Product product){
