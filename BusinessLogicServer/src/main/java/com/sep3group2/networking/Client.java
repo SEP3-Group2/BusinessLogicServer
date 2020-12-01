@@ -25,4 +25,5 @@ public interface Client
     CustomerUser getCustomerUser(String email);
 
     EmployeeUser getEmployeeUser(String email);
+    int getLastProductID(int id);
 }
