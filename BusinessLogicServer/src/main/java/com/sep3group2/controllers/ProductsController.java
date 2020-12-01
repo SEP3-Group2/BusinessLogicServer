@@ -33,9 +33,9 @@ public class ProductsController
         return socketClient.getProductById(id);
     }
 
-    @GetMapping("/{title}/{category}")
-    public List<Product> getTitleCategoryFilteredProducts(@PathVariable String title,@PathVariable String category){
-        return socketClient.getTitleCategoryFilteredProducts(title,category);
+    @GetMapping("/{id}/{id2}")
+    public int getLastProductID(@PathVariable int id,@PathVariable int id2){
+        return socketClient.getLastProductID(id);
     }
 
     @GetMapping("/{title}/{category}/{price}")
@@ -51,4 +51,6 @@ public class ProductsController
 
 
     }
+
+
 }

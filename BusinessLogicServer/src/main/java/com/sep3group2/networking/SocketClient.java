@@ -39,19 +39,18 @@ public class SocketClient implements Client
         return null;
     }
 
-    @Override public List<Product> getTitleCategoryFilteredProducts(String title, String category)
+    @Override public int getLastProductID(int id)
     {
         try
         {
-            String[] requests = {title, category};
-            Request response = request(requests, "GetTitleCategoryFilteredProducts");
-            return (List<Product>) response.getArg();
+            Request response = request(id, "GetLastProductID");
+            return (int) response.getArg();
         }
         catch (IOException | ClassNotFoundException e)
         {
             e.printStackTrace();
         }
-        return null;
+        return 0;
     }
 
     @Override public List<Product> getTitleCategoryPriceFilteredProducts(String title, String category,String price)
