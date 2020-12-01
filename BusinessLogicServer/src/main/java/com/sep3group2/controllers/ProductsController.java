@@ -6,7 +6,6 @@ import database.productDAO.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import transferobjects.Hello;
 import transferobjects.Product;
 
 import java.util.List;
@@ -29,9 +28,9 @@ public class ProductsController
         return socketClient.getAllProducts();
     }
 
-    @GetMapping("/{title}")
-    public List<Product> getTitleFilteredProducts(@PathVariable String title){
-        return socketClient.getTitleFilteredProducts(title);
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable int id){
+        return socketClient.getProductById(id);
     }
 
     @GetMapping("/{title}/{category}")
