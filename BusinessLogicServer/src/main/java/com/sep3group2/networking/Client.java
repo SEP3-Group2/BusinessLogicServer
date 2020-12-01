@@ -11,6 +11,7 @@ public interface Client
 {
     List<Product> getAllProducts();
     Product getProductById(int id);
+    List<Product> getTitleCategoryFilteredProducts(String title,String category);
     List<Product> getTitleCategoryPriceFilteredProducts(String title,String category,String price);
 
     Product addProduct(String title, String category, String description, double price);
@@ -24,6 +25,5 @@ public interface Client
     CustomerUser getCustomerUser(String email);
 
     EmployeeUser getEmployeeUser(String email);
-
     int getLastProductID(int id);
 }
