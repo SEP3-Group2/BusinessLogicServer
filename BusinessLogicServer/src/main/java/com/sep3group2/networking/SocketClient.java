@@ -158,6 +158,52 @@ public class SocketClient implements Client
     }
 
     @Override
+    public List<WarehouseProduct> getAllWarehouseProducts() {
+        try
+        {
+            Request response = request(null, "GetAllWarehouseProducts");
+            return (List<WarehouseProduct>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<WarehouseProduct> getStoreWarehouseProducts(int storeid) {
+        try
+        {
+            Request response = request(storeid, "GetStoreWarehouseProduct");
+            return (List<WarehouseProduct>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public WarehouseProduct addWarehouseProduct(int storeid, int productid, int quantity) {
+        try
+        {
+            WarehouseProduct newProduct = new WarehouseProduct(storeid,productid,quantity);
+            Request response = request(newProduct, "AddWarehouseProduct");
+            return (WarehouseProduct) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+
+
+    @Override
     public void startClient()
     {
         try
