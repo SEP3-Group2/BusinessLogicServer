@@ -25,4 +25,5 @@ public interface Client
     List<WarehouseProduct> getAllWarehouseProducts();
     List<WarehouseProduct> getStoreWarehouseProducts(int storeid);
     WarehouseProduct addWarehouseProduct(int storeid, int productid, int quantity);
+    int getLastProductID(int id);
 }

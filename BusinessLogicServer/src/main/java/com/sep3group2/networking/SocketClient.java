@@ -222,6 +222,20 @@ public class SocketClient implements Client
         }
     }
 
+    @Override public int getLastProductID(int id)
+    {
+        try
+        {
+            Request response = request(id, "GetLastProductID");
+            return (int) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 
 
     private void listenToServer(ObjectOutputStream outToServer, ObjectInputStream inFromServer)
@@ -248,4 +262,5 @@ public class SocketClient implements Client
         outToServer.writeObject(new Request(type, arg));
         return (Request) inFromServer.readObject();
     }
+
 }
