@@ -1,9 +1,6 @@
 package com.sep3group2.networking;
 
-import transferobjects.CustomerUser;
-import transferobjects.Hello;
-import transferobjects.Product;
-import transferobjects.EmployeeUser;
+import transferobjects.*;
 
 import java.util.List;
 
@@ -25,4 +22,7 @@ public interface Client
     CustomerUser getCustomerUser(String email);
 
     EmployeeUser getEmployeeUser(String email);
+    List<WarehouseProduct> getAllWarehouseProducts();
+    List<WarehouseProduct> getStoreWarehouseProducts(int storeid);
+    WarehouseProduct addWarehouseProduct(int storeid, int productid, int quantity);
 }
