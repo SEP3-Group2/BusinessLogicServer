@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import transferobjects.CartProduct;
-import transferobjects.OrderProduct;
 import transferobjects.WarehouseProduct;
 
 import java.util.List;
@@ -41,21 +40,6 @@ public class WarehouseProductController {
     @GetMapping("/{productid}/{quantity}")
     public List<CartProduct> GetCartProducts(@PathVariable int productid,@PathVariable int quantity){
         return socketClient.GetCartProducts(productid,quantity);
-    }
-    @PostMapping("/orderProductFromManufacturer")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void OrderProductFromManufacturer(@RequestBody OrderProduct orderProduct){
-        socketClient.orderProductFromManufacturer(orderProduct);
-    }
-    @PostMapping("/orderProductFromStore")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void OrderProductFromStore(@RequestBody OrderProduct orderProduct){
-        socketClient.orderProductFromStore(orderProduct);
-    }
-    @PostMapping("/decrementProductQuantity")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void DecrementProductQuantity(@RequestBody OrderProduct orderProduct){
-        socketClient.decrementProductQuantity(orderProduct);
     }
 
 }

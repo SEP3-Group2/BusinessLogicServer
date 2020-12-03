@@ -33,7 +33,4 @@ public interface Client
 
     List<WPJoin> getAllWPJoin();
     List<WPJoin> getStoreWPJoin(int storeid);
-    void orderProductFromManufacturer(OrderProduct orderProduct);
-    void orderProductFromStore(OrderProduct orderProduct);
-    void decrementProductQuantity(OrderProduct orderProduct);
 }
