@@ -236,7 +236,35 @@ public class SocketClient implements Client
         return 0;
     }
 
+    @Override public List<CartProduct> GetCartProducts(int productid,
+        int quantity)
+    {
+        try
+        {
+            int[] requests = {productid,quantity};
+            Request response = request(requests, "GetCartProducts");
+            return (List<CartProduct>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
+    @Override public Transaction addTransaction(Transaction transaction)
+    {
+        try
+        {
+            Request response = request(transaction, "AddTransaction");
+            return (Transaction) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     private void listenToServer(ObjectOutputStream outToServer, ObjectInputStream inFromServer)
     {

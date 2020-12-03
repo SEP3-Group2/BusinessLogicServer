@@ -6,7 +6,7 @@ import database.warehouseproductDAO.WarehouseProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import transferobjects.Product;
+import transferobjects.CartProduct;
 import transferobjects.WarehouseProduct;
 
 import java.util.List;
@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/warehouseproducts")
 public class WarehouseProductController {
-    private WarehouseProductDAO productDAO;
     private Client socketClient;
 
     @Autowired
@@ -31,11 +30,16 @@ public class WarehouseProductController {
     public WarehouseProduct AddWarehouseProduct(@RequestBody WarehouseProduct warehouseProduct){
 
         return socketClient.addWarehouseProduct(warehouseProduct.getStoreId(), warehouseProduct.getProductId(), warehouseProduct.getQuantity());
-
     }
+
     @GetMapping("/{storeid}")
-    public List<WarehouseProduct> getStoreWarehouseProducts(@PathVariable int id){
-        return socketClient.getStoreWarehouseProducts(id);
+    public List<WarehouseProduct> getStoreWarehouseProducts(@PathVariable int storeid){
+        return socketClient.getStoreWarehouseProducts(storeid);
+    }
+
+    @GetMapping("/{productid}/{quantity}")
+    public List<CartProduct> GetCartProducts(@PathVariable int productid,@PathVariable int quantity){
+        return socketClient.GetCartProducts(productid,quantity);
     }
 
 }
