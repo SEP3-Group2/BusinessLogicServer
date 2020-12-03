@@ -26,4 +26,8 @@ public interface Client
     List<WarehouseProduct> getStoreWarehouseProducts(int storeid);
     WarehouseProduct addWarehouseProduct(int storeid, int productid, int quantity);
     int getLastProductID(int id);
+
+    List<CartProduct> GetCartProducts(int productid, int quantity);
+
+    Transaction addTransaction(Transaction transaction);
 }
