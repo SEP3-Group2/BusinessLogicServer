@@ -39,18 +39,10 @@ public class SocketClient implements Client
         return null;
     }
 
-    @Override public int getLastProductID(int id)
+    @Override
+    public List<Product> getTitleCategoryFilteredProducts(String title, String category)
     {
-        try
-        {
-            Request response = request(id, "GetLastProductID");
-            return (int) response.getArg();
-        }
-        catch (IOException | ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        return 0;
+        return null;
     }
 
     @Override public List<Product> getTitleCategoryPriceFilteredProducts(String title, String category,String price)
@@ -257,6 +249,35 @@ public class SocketClient implements Client
         {
             Request response = request(transaction, "AddTransaction");
             return (Transaction) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    @Override
+    public List<WPJoin> getAllWPJoin() {
+        try
+        {
+            Request response = request(null, "GetAllWPJoin");
+            return (List<WPJoin>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<WPJoin> getStoreWPJoin(int storeid) {
+        try
+        {
+            Request response = request(storeid, "GetStoreWPJoin");
+            return (List<WPJoin>) response.getArg();
         }
         catch (IOException | ClassNotFoundException e)
         {

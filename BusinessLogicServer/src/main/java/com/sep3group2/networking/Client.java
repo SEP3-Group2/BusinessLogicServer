@@ -30,4 +30,7 @@ public interface Client
     List<CartProduct> GetCartProducts(int productid, int quantity);
 
     Transaction addTransaction(Transaction transaction);
+
+    List<WPJoin> getAllWPJoin();
+    List<WPJoin> getStoreWPJoin(int storeid);
 }
