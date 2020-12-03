@@ -14,7 +14,6 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductsController
 {
-    private ProductDAO productDAO;
     private Client socketClient;
 
     @Autowired
