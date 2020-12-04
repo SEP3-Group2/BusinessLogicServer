@@ -313,6 +313,41 @@ public class SocketClient implements Client
         }
         return null;
     }
+    @Override
+    public void orderProductFromManufacturer(OrderProduct orderProduct) {
+        try
+        {
+            Request response = request(orderProduct, "OrderProductFromManufacturer");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void orderProductFromStore(OrderProduct orderProduct) {
+        try
+        {
+            Request response = request(orderProduct, "OrderProductFromStore");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void decrementProductQuantity(OrderProduct orderProduct) {
+        try
+        {
+            Request response = request(orderProduct, "DecrementProductQuantity");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     private void listenToServer(ObjectOutputStream outToServer, ObjectInputStream inFromServer)
     {
