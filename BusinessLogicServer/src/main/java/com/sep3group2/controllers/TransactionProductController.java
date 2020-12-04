@@ -6,29 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import transferobjects.Transaction;
-import transferobjects.WarehouseProduct;
+import transferobjects.TransactionProduct;
 
 @RestController
-@RequestMapping("/transaction")
-public class TransactionController
+@RequestMapping("/transactionProduct")
+public class TransactionProductController
 {
   private Client socketClient;
 
   @Autowired
-  public TransactionController()
+  public TransactionProductController()
   {
     this.socketClient = new SocketClient();
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public Transaction AddTransaction(@RequestBody Transaction transaction){
+  public TransactionProduct AddTransactionProduct(@RequestBody TransactionProduct transactionProduct){
 
-    return socketClient.addTransaction(transaction);
-  }
-
-  @GetMapping("/{id}/{id}/{id}")
-  public int getLastTransactionID(@PathVariable int id){
-    return socketClient.getLastTransactionID(id);
+    return socketClient.addTransactionProduct(transactionProduct);
   }
 }
