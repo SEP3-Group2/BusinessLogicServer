@@ -286,6 +286,36 @@ public class SocketClient implements Client
         return null;
     }
 
+    @Override public CustomerUser getCustomerById(int id)
+    {
+        try
+        {
+            Request response = request(id, "GetCustomerById");
+            return (CustomerUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public CustomerUser updateCustomerInfo(CustomerUser customerUser)
+    {
+        try
+        {
+          Request response = request(customerUser,"UpdateCustomerInfo");
+            return (CustomerUser) response.getArg();
+
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     private void listenToServer(ObjectOutputStream outToServer, ObjectInputStream inFromServer)
     {
         try

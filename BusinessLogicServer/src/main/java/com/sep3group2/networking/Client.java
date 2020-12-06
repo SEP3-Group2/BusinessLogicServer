@@ -33,4 +33,9 @@ public interface Client
 
     List<WPJoin> getAllWPJoin();
     List<WPJoin> getStoreWPJoin(int storeid);
+
+    CustomerUser getCustomerById(int id);
+    CustomerUser updateCustomerInfo(CustomerUser customerUser);
+
+
 }
