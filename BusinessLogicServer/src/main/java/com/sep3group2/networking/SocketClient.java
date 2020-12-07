@@ -367,7 +367,7 @@ public class SocketClient implements Client
     {
         try
         {
-          Request response = request(customerUser,"UpdateCustomerInfo");
+            Request response = request(customerUser,"UpdateCustomerInfo");
             return (CustomerUser) response.getArg();
 
         }
@@ -377,6 +377,64 @@ public class SocketClient implements Client
         }
         return null;
 
+    }
+
+    @Override
+    public List<EmployeeUser> getAllEmployeeUsers()
+    {
+        try
+        {
+            Request response = request(null, "GetAllEmployeeUsers");
+            return (List<EmployeeUser>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public EmployeeUser getEmployeeUserByID(int id)
+    {
+        try
+        {
+            Request response = request(id, "GetEmployeeByID");
+            return (EmployeeUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public EmployeeUser updateEmployeeUser(EmployeeUser user)
+    {
+        try
+        {
+            Request response = request(user, "UpdateEmployeeUser");
+            return (EmployeeUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteEmployeeUser(int id)
+    {
+        try
+        {
+            request(id, "DeleteEmployeeUser");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void listenToServer(ObjectOutputStream outToServer, ObjectInputStream inFromServer)

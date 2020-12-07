@@ -39,6 +39,13 @@ public interface Client
     void orderProductFromStore(OrderProduct orderProduct);
     void decrementProductQuantity(OrderProduct orderProduct);
 
+    List<EmployeeUser> getAllEmployeeUsers();
+
+    EmployeeUser getEmployeeUserByID(int id);
+
+    EmployeeUser updateEmployeeUser(EmployeeUser user);
+
+    void deleteEmployeeUser(int id);
 
     CustomerUser getCustomerById(int id);
     CustomerUser updateCustomerInfo(CustomerUser customerUser);
