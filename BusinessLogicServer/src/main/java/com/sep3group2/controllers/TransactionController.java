@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import transferobjects.Transaction;
 import transferobjects.WarehouseProduct;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/transaction")
 public class TransactionController
@@ -30,5 +32,10 @@ public class TransactionController
   @GetMapping("/{id}/{id}/{id}")
   public int getLastTransactionID(@PathVariable int id){
     return socketClient.getLastTransactionID(id);
+  }
+
+  @GetMapping("/{email}")
+  public List<Transaction> getTransactionsByEmail(@PathVariable String email){
+    return socketClient.getTransactionsByEmail(email);
   }
 }

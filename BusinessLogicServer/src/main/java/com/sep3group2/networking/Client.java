@@ -1,5 +1,6 @@
 package com.sep3group2.networking;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import transferobjects.*;
 
 import java.util.List;
@@ -29,9 +30,11 @@ public interface Client
     int getLastTransactionID(int id);
 
     List<CartProduct> GetCartProducts(int productid, int quantity);
+    List<CartProduct> GetNotEnoughCartProducts(int productid, int quantity);
 
     Transaction addTransaction(Transaction transaction);
     TransactionProduct addTransactionProduct(TransactionProduct transactionProduct);
+    List<Transaction> getTransactionsByEmail( String email);
 
     List<WPJoin> getAllWPJoin();
     List<WPJoin> getStoreWPJoin(int storeid);
@@ -39,4 +42,5 @@ public interface Client
     void orderProductFromStore(OrderProduct orderProduct);
     void decrementProductQuantity(OrderProduct orderProduct);
 
+    List<HistoryProduct> getTransProById(int transid);
 }
