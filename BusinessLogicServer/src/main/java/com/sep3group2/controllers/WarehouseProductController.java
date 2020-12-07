@@ -42,7 +42,7 @@ public class WarehouseProductController {
     public List<CartProduct> GetCartProducts(@PathVariable int productid,@PathVariable int quantity){
         return socketClient.GetCartProducts(productid,quantity);
     }
-    @GetMapping("/{productid}/{quantity}/{quantity}")
+    @GetMapping("/{productid}/{quantity}/{quantity}/{quantity}")
     public List<CartProduct> GetNotEnoughCartProducts(@PathVariable int productid,@PathVariable int quantity){
         return socketClient.GetNotEnoughCartProducts(productid,quantity);
     }
