@@ -36,5 +36,7 @@ public interface Client
     void orderProductFromManufacturer(OrderProduct orderProduct);
     void orderProductFromStore(OrderProduct orderProduct);
     void decrementProductQuantity(OrderProduct orderProduct);
+    List<WarehouseProduct> getWarehouseProductFromStoresById(WarehouseProduct warehouseProduct);
+    void modifyProduct(Product product);
 
 }

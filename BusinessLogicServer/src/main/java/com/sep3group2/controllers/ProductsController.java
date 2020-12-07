@@ -6,6 +6,7 @@ import database.productDAO.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import transferobjects.OrderProduct;
 import transferobjects.Product;
 
 import java.util.List;
@@ -49,6 +50,11 @@ public class ProductsController
       return socketClient.addProduct(product.getTitle(),product.getCategory(), product.getDescription(), product.getPrice());
 
 
+    }
+    @PostMapping("/modifyProduct")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void ModifyProduct(@RequestBody Product product){
+        socketClient.modifyProduct(product);
     }
 
 
