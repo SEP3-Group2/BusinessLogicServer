@@ -43,4 +43,16 @@ public interface Client
     void decrementProductQuantity(OrderProduct orderProduct);
 
     List<HistoryProduct> getTransProById(int transid);
+
+    List<EmployeeUser> getAllEmployeeUsers();
+
+    EmployeeUser getEmployeeUserByID(int id);
+
+    EmployeeUser updateEmployeeUser(EmployeeUser user);
+
+    void deleteEmployeeUser(int id);
+
+    CustomerUser getCustomerById(int id);
+    CustomerUser updateCustomerInfo(CustomerUser customerUser);
+
 }
