@@ -39,4 +39,8 @@ public interface Client
     void orderProductFromStore(OrderProduct orderProduct);
     void decrementProductQuantity(OrderProduct orderProduct);
 
+
+    CustomerUser getCustomerById(int id);
+    CustomerUser updateCustomerInfo(CustomerUser customerUser);
+
 }

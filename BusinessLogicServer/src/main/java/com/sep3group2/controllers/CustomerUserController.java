@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import transferobjects.CustomerUser;
+import transferobjects.EmployeeUser;
+import transferobjects.Product;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class CustomerUserController
         return socketClient.getAllUsers();
     }
 
-    @GetMapping("/{email}")
+   @GetMapping("/{email}")
     public CustomerUser getUser(@PathVariable String email){
         return socketClient.getCustomerUser(email);
     }
@@ -36,5 +38,18 @@ public class CustomerUserController
     public void registerUser(@RequestBody CustomerUser user)
     {
         socketClient.registerCustomer(user);
+    }
+
+   @GetMapping("users/{id}")
+    public CustomerUser getCustomerById(@PathVariable int id){
+        return socketClient.getCustomerById(id);
+    }
+
+    @PatchMapping("")
+    public CustomerUser updateCustomerInfo(@RequestBody CustomerUser user)
+    {
+       return socketClient.updateCustomerInfo(user);
+
+
     }
 }
