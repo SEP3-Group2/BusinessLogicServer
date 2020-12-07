@@ -62,5 +62,10 @@ public class WarehouseProductController {
     public void DecrementProductQuantity(@RequestBody OrderProduct orderProduct){
         socketClient.decrementProductQuantity(orderProduct);
     }
+    @GetMapping("/{storeid}/{productid}/{quantity}")
+    public List<WarehouseProduct> GetWarehouseProductFromStoresById(@PathVariable int storeid, @PathVariable int productid, @PathVariable int quantity){
+        WarehouseProduct warehouseProduct=new WarehouseProduct(storeid, productid, quantity);
+        return socketClient.getWarehouseProductFromStoresById(warehouseProduct);
+    }
 
 }

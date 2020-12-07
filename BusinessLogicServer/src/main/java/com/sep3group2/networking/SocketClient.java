@@ -379,6 +379,20 @@ public class SocketClient implements Client
         }
     }
 
+    @Override
+    public List<WarehouseProduct> getWarehouseProductFromStoresById(WarehouseProduct warehouseProduct) {
+        try
+        {
+            Request response = request(warehouseProduct, "GetWarehouseProductFromStoresById");
+            return  (List<WarehouseProduct>)response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     @Override public List<HistoryProduct> getTransProById(int transid)
     {
@@ -471,6 +485,17 @@ public class SocketClient implements Client
     }
 
     @Override
+    public void modifyProduct(Product product) {
+        try
+        {
+            Request response = request(product, "ModifyProduct");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public void deleteEmployeeUser(int id)
     {
         try
