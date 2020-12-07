@@ -26,16 +26,21 @@ public interface Client
     List<WarehouseProduct> getStoreWarehouseProducts(int storeid);
     WarehouseProduct addWarehouseProduct(int storeid, int productid, int quantity);
     int getLastProductID(int id);
+    int getLastTransactionID(int id);
 
     List<CartProduct> GetCartProducts(int productid, int quantity);
 
     Transaction addTransaction(Transaction transaction);
+    TransactionProduct addTransactionProduct(TransactionProduct transactionProduct);
 
     List<WPJoin> getAllWPJoin();
     List<WPJoin> getStoreWPJoin(int storeid);
+    void orderProductFromManufacturer(OrderProduct orderProduct);
+    void orderProductFromStore(OrderProduct orderProduct);
+    void decrementProductQuantity(OrderProduct orderProduct);
+
 
     CustomerUser getCustomerById(int id);
     CustomerUser updateCustomerInfo(CustomerUser customerUser);
-
 
 }

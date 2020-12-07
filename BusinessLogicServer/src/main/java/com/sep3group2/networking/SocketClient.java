@@ -227,6 +227,20 @@ public class SocketClient implements Client
         return 0;
     }
 
+    @Override public int getLastTransactionID(int id)
+    {
+        try
+        {
+            Request response = request(id, "GetLastTransactionID");
+            return (int) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     @Override public List<CartProduct> GetCartProducts(int productid,
         int quantity)
     {
@@ -257,6 +271,20 @@ public class SocketClient implements Client
         return null;
     }
 
+    @Override public TransactionProduct addTransactionProduct(
+        TransactionProduct transactionProduct)
+    {
+        try
+        {
+            Request response = request(transactionProduct, "AddTransactionProduct");
+            return (TransactionProduct) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public List<WPJoin> getAllWPJoin() {
@@ -284,6 +312,41 @@ public class SocketClient implements Client
             e.printStackTrace();
         }
         return null;
+    }
+    @Override
+    public void orderProductFromManufacturer(OrderProduct orderProduct) {
+        try
+        {
+            Request response = request(orderProduct, "OrderProductFromManufacturer");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void orderProductFromStore(OrderProduct orderProduct) {
+        try
+        {
+            Request response = request(orderProduct, "OrderProductFromStore");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void decrementProductQuantity(OrderProduct orderProduct) {
+        try
+        {
+            Request response = request(orderProduct, "DecrementProductQuantity");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override public CustomerUser getCustomerById(int id)
