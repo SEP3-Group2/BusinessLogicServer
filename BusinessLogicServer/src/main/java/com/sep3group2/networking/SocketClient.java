@@ -257,6 +257,22 @@ public class SocketClient implements Client
         return null;
     }
 
+    @Override public List<CartProduct> GetNotEnoughCartProducts(int productid,
+        int quantity)
+    {
+        try
+        {
+            int[] requests = {productid,quantity};
+            Request response = request(requests, "GetNotCartProducts");
+            return (List<CartProduct>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override public Transaction addTransaction(Transaction transaction)
     {
         try
@@ -278,6 +294,20 @@ public class SocketClient implements Client
         {
             Request response = request(transactionProduct, "AddTransactionProduct");
             return (TransactionProduct) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<Transaction> getTransactionsByEmail(String email)
+    {
+        try
+        {
+            Request response = request(email, "GetTransactionsByEmail");
+            return (List<Transaction>) response.getArg();
         }
         catch (IOException | ClassNotFoundException e)
         {
@@ -349,6 +379,21 @@ public class SocketClient implements Client
         }
     }
 
+
+    @Override public List<HistoryProduct> getTransProById(int transid)
+    {
+        try
+        {
+            Request response = request(transid, "GetHistoryProducts");
+            return (List<HistoryProduct>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override public CustomerUser getCustomerById(int id)
     {
         try
@@ -362,6 +407,7 @@ public class SocketClient implements Client
         }
         return null;
     }
+
 
     @Override public CustomerUser updateCustomerInfo(CustomerUser customerUser)
     {
