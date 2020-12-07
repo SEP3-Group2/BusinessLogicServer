@@ -42,6 +42,11 @@ public class WarehouseProductController {
     public List<CartProduct> GetCartProducts(@PathVariable int productid,@PathVariable int quantity){
         return socketClient.GetCartProducts(productid,quantity);
     }
+    @GetMapping("/{productid}/{quantity}/{quantity}")
+    public List<CartProduct> GetNotEnoughCartProducts(@PathVariable int productid,@PathVariable int quantity){
+        return socketClient.GetNotEnoughCartProducts(productid,quantity);
+    }
+
     @PostMapping("/orderProductFromManufacturer")
     @ResponseStatus(HttpStatus.CREATED)
     public void OrderProductFromManufacturer(@RequestBody OrderProduct orderProduct){

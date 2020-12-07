@@ -227,6 +227,20 @@ public class SocketClient implements Client
         return 0;
     }
 
+    @Override public int getLastTransactionID(int id)
+    {
+        try
+        {
+            Request response = request(id, "GetLastTransactionID");
+            return (int) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     @Override public List<CartProduct> GetCartProducts(int productid,
         int quantity)
     {
@@ -234,6 +248,22 @@ public class SocketClient implements Client
         {
             int[] requests = {productid,quantity};
             Request response = request(requests, "GetCartProducts");
+            return (List<CartProduct>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<CartProduct> GetNotEnoughCartProducts(int productid,
+        int quantity)
+    {
+        try
+        {
+            int[] requests = {productid,quantity};
+            Request response = request(requests, "GetNotCartProducts");
             return (List<CartProduct>) response.getArg();
         }
         catch (IOException | ClassNotFoundException e)
@@ -257,6 +287,34 @@ public class SocketClient implements Client
         return null;
     }
 
+    @Override public TransactionProduct addTransactionProduct(
+        TransactionProduct transactionProduct)
+    {
+        try
+        {
+            Request response = request(transactionProduct, "AddTransactionProduct");
+            return (TransactionProduct) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<Transaction> getTransactionsByEmail(String email)
+    {
+        try
+        {
+            Request response = request(email, "GetTransactionsByEmail");
+            return (List<Transaction>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public List<WPJoin> getAllWPJoin() {
@@ -335,11 +393,114 @@ public class SocketClient implements Client
         return null;
     }
 
+
+    @Override public List<HistoryProduct> getTransProById(int transid)
+    {
+        try
+        {
+            Request response = request(transid, "GetHistoryProducts");
+            return (List<HistoryProduct>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public CustomerUser getCustomerById(int id)
+    {
+        try
+        {
+            Request response = request(id, "GetCustomerById");
+            return (CustomerUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    @Override public CustomerUser updateCustomerInfo(CustomerUser customerUser)
+    {
+        try
+        {
+            Request response = request(customerUser,"UpdateCustomerInfo");
+            return (CustomerUser) response.getArg();
+
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    @Override
+    public List<EmployeeUser> getAllEmployeeUsers()
+    {
+        try
+        {
+            Request response = request(null, "GetAllEmployeeUsers");
+            return (List<EmployeeUser>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public EmployeeUser getEmployeeUserByID(int id)
+    {
+        try
+        {
+            Request response = request(id, "GetEmployeeByID");
+            return (EmployeeUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public EmployeeUser updateEmployeeUser(EmployeeUser user)
+    {
+        try
+        {
+            Request response = request(user, "UpdateEmployeeUser");
+            return (EmployeeUser) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public void modifyProduct(Product product) {
         try
         {
             Request response = request(product, "ModifyProduct");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteEmployeeUser(int id)
+    {
+        try
+        {
+            request(id, "DeleteEmployeeUser");
         }
         catch (IOException | ClassNotFoundException e)
         {
