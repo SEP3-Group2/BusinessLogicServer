@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import transferobjects.Transaction;
+import transferobjects.TransactionProduct;
 import transferobjects.WarehouseProduct;
 
 import java.util.List;
@@ -37,5 +38,15 @@ public class TransactionController
   @GetMapping("/{email}")
   public List<Transaction> getTransactionsByEmail(@PathVariable String email){
     return socketClient.getTransactionsByEmail(email);
+  }
+
+  @GetMapping("/ready/{id}")
+  public Transaction UpdateTransactionToReady(@PathVariable int id){
+    return socketClient.UpdateTransactionToReady(id);
+  }
+
+  @GetMapping("/delivered/{id}")
+  public Transaction UpdateTransactionToDelivered(@PathVariable int id){
+    return socketClient.UpdateTransactionToDelivered(id);
   }
 }

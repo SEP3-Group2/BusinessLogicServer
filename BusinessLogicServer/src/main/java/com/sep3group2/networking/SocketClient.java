@@ -439,6 +439,99 @@ public class SocketClient implements Client
 
     }
 
+    @Override public List<ReserveHistory> getAllReserveHistory()
+    {
+        try
+        {
+            Request response = request(null, "GetAllReserveHistory");
+            return (List<ReserveHistory>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<ReserveHistory> getReserveHistoryByStoreEmail(
+        int storeid, String email)
+    {
+        try
+        {
+            String[] requests = {String.valueOf(storeid),email};
+            Request response = request(requests, "GetReserveHistoryByStoreEmail");
+            return (List<ReserveHistory>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<ReserveHistory> getReserveHistoryByStoreEmailDelivery(
+        int storeid, String email, String deliverymethod)
+    {
+        try
+        {
+            String[] requests = {String.valueOf(storeid),email,deliverymethod};
+            Request response = request(requests, "getReserveHistoryByStoreEmailDelivery");
+            return (List<ReserveHistory>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public WarehouseProduct UpdateWarehouseQuantity(int storeid,
+        int productid, int quantity)
+    {
+        try
+        {
+            int[] requests = {storeid,productid,quantity};
+            Request response = request(requests,"UpdateWarehouseQuantity");
+            return (WarehouseProduct) response.getArg();
+
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public Transaction UpdateTransactionToReady(int id)
+    {
+        try
+        {
+            Request response = request(id,"UpdateTransactionToReady");
+            return (Transaction) response.getArg();
+
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public Transaction UpdateTransactionToDelivered(int id)
+    {
+        try
+        {
+            Request response = request(id,"UpdateTransactionToDelivered");
+            return (Transaction) response.getArg();
+
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public List<EmployeeUser> getAllEmployeeUsers()
     {

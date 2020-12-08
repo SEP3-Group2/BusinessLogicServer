@@ -68,4 +68,9 @@ public class WarehouseProductController {
         return socketClient.getWarehouseProductFromStoresById(warehouseProduct);
     }
 
+    @GetMapping("/update/{storeid}/{productid}/{quantity}")
+  public WarehouseProduct UpdateTransaction(@PathVariable int storeid,@PathVariable int productid,@PathVariable int quantity){
+    return socketClient.UpdateWarehouseQuantity(storeid,productid,quantity);
+  }
+
 }
