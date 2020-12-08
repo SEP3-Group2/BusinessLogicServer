@@ -57,4 +57,10 @@ public interface Client
     CustomerUser getCustomerById(int id);
     CustomerUser updateCustomerInfo(CustomerUser customerUser);
 
+  List<ReserveHistory> getAllReserveHistory();
+    List<ReserveHistory> getReserveHistoryByStoreEmail(int storeid, String email);
+    List<ReserveHistory> getReserveHistoryByStoreEmailDelivery(int storeid, String email, String deliverymethod);
+    WarehouseProduct UpdateWarehouseQuantity(int storeid, int productid, int quantity);
+    Transaction UpdateTransactionToReady(int id);
+    Transaction UpdateTransactionToDelivered(int id);
 }
