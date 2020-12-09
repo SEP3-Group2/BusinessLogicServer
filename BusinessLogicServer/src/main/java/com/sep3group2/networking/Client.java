@@ -56,6 +56,9 @@ public interface Client
 
     CustomerUser getCustomerById(int id);
     CustomerUser updateCustomerInfo(CustomerUser customerUser);
+    List<Rating> getAllRatings();
+    void addRating(Rating rating);
+    List<DidUserBuyJoin> didUserBuyThisProduct(String email);
 
   List<ReserveHistory> getAllReserveHistory();
     List<ReserveHistory> getReserveHistoryByStoreEmail(int storeid, String email);

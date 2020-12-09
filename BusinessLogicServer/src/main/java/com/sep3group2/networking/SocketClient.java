@@ -533,6 +533,47 @@ public class SocketClient implements Client
     }
 
     @Override
+    public List<Rating> getAllRatings() {
+        try
+        {
+            Request response = request(null, "GetAllRatings");
+            return (List<Rating>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void addRating(Rating rating) {
+
+        try
+        {
+            Request response = request(rating, "AddRating");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<DidUserBuyJoin> didUserBuyThisProduct(String email) {
+        try
+        {
+            Request response = request(email, "DidUserBuyThisProduct");
+            return (List<DidUserBuyJoin>) response.getArg();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public List<EmployeeUser> getAllEmployeeUsers()
     {
         try
